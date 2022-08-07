@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LearningMongodb.Models;
+using LearningMongodb.Services;
 
 namespace LearningMongodb
 {
@@ -26,6 +28,8 @@ namespace LearningMongodb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoDBSettings>(Configuration.GetSection("MongoDB"));
+            services.AddSingleton<MongoDBService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
