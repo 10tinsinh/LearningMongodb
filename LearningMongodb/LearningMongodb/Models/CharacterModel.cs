@@ -13,7 +13,9 @@ namespace LearningMongodb.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
+        public string SysCode { get; set; } = null!;
         public string Name { get; set; } = null!;
+
 
 
 

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LearningMongodb.Models;
 using LearningMongodb.Services;
+using LearningMongodb.Repository;
 
 namespace LearningMongodb
 {
@@ -30,6 +31,10 @@ namespace LearningMongodb
         {
             services.Configure<MongoDBSettings>(Configuration.GetSection("MongoDB"));
             services.AddSingleton<MongoDBService>();
+
+            services.AddScoped<ICharacterDAL, CharacterDAL>();
+            services.AddScoped<ICharacterServices, CharacterServices>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
